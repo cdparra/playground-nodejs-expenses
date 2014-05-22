@@ -1,5 +1,8 @@
 var express = require('express'),
-    operations = require('./routes/operations');
+    db = require('./routes/db'),
+    operations = require('./routes/operations'),
+    categories = require('./routes/categories'),
+    accounts = require('./routes/accounts');
  
 var app = express();
  
@@ -13,6 +16,19 @@ app.get('/operations/:id', operations.findById);
 app.post('/operations', operations.addOperation);
 app.put('/operations/:id', operations.updateOperation);
 app.delete('/operations/:id', operations.deleteOperation);
+
+app.get('/categories', categories.findAll);
+app.get('/categories/:id', categories.findById);
+app.post('/categories', categories.addOperation);
+app.put('/categories/:id', categories.updateOperation);
+app.delete('/categories/:id', categories.deleteOperation);
+
+app.get('/accounts', accounts.findAll);
+app.get('/accounts/:id', accounts.findById);
+app.post('/accounts', accounts.addOperation);
+app.put('/accounts/:id', accounts.updateOperation);
+app.delete('/accounts/:id', accounts.deleteOperation);
+
  
 app.listen(3000);
 console.log('Listening on port 3000...');
